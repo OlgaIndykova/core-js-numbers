@@ -52,78 +52,53 @@ getLinearEquationRoot(5, -10);
 getLinearEquationRoot(1, 8);
 getLinearEquationRoot(5, 0);
 
-/**
- * Returns an angle (in radians) between two vectors given by xi and yi,
- * coordinates in Cartesian plane.
- * See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
- *
- * @param {number} x1
- * @param {number} y1
- * @param {number} x2
- * @param {number} y2
- * @return {number}
- *
- * @example:
- *   (1,0) (0,1)     => π/2
- *   (0,1) (0,-1)    => π
- *   (0,-1) (1,0)    => π/2
- *   (0,1) (0,1)     => 0
- */
-function getAngleBetweenVectors(/* x1, y1, x2, y2 */) {
-  throw new Error('Not implemented');
+// Returns an angle (in radians) between two vectors given by xi and yi,
+// coordinates in Cartesian plane.
+// See details https://en.wikipedia.org/wiki/Euclidean_vector#Representations
+
+function getAngleBetweenVectors(x1, y1, x2, y2) {
+  const n = x1 * x2 + y1 * y2;
+  const m = x1 ** 2 + y1 ** 2;
+  const p = x2 ** 2 + y2 ** 2;
+  const h = Math.acos(n / (Math.sqrt(Math.abs(m)) * Math.sqrt(Math.abs(p))));
+  return h;
 }
+getAngleBetweenVectors(1, 0, 0, 1);
+getAngleBetweenVectors(0, 1, 0, -1);
+getAngleBetweenVectors(0, -1, 1, 0);
+getAngleBetweenVectors(0, 1, 0, 1);
+
+// Returns a last digit of a integer number.
+// The input parameter will always be greater than or equal to zero and will be in decimal notation.
+
+function getLastDigit(value) {
+  return value % 10;
+}
+getLastDigit(100);
+getLastDigit(37);
+getLastDigit(5);
+getLastDigit(0);
+
+// Returns a number by given string representation.
+
+function parseNumberFromString(value) {
+  return +value;
+}
+parseNumberFromString('100');
+parseNumberFromString('37');
+parseNumberFromString('-525.5');
+
+// Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
+
+function getParallelepipedDiagonal(a, b, c) {
+  return Math.sqrt(a ** 2 + b ** 2 + c ** 2);
+}
+getParallelepipedDiagonal(1, 1, 1);
+getParallelepipedDiagonal(3, 3, 3);
+getParallelepipedDiagonal(1, 2, 3);
 
 /**
- * Returns a last digit of a integer number.
- * The input parameter will always be greater than or equal to zero and will be in decimal notation.
- *
- * @param {number} value
- * @return {number}
- *
- * @example:
- *   100     => 0
- *    37     => 7
- *     5     => 5
- *     0     => 0
- */
-function getLastDigit(/* value */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns a number by given string representation.
- *
- * @param {string} value
- * @return {number}
- *
- * @example:
- *    '100'     => 100
- *     '37'     => 37
- * '-525.5'     => -525.5
- */
-function parseNumberFromString(/* value */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns a diagonal length of the rectangular parallelepiped given by its sides a,b,c.
- *
- * @param {number} a
- * @param {number} b
- * @param {number} c
- * @return {number}
- *
- * @example:
- *   1,1,1   => 1.7320508075688772
- *   3,3,3   => 5.196152422706632
- *   1,2,3   => 3.741657386773941
- */
-function getParallelepipedDiagonal(/* a, b, c */) {
-  throw new Error('Not implemented');
-}
-
-/**
- * Returns the number rounded to specified power of 10.
+Returns the number rounded to specified power of 10.
  *
  * @param {number} num
  * @param {number} pow
