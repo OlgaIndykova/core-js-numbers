@@ -158,20 +158,14 @@ function toNumber(/* value, def */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the cube of the given number.
- *
- * @param {number} num
- * @return {number}
- *
- * @example:
- *   3  => 27
- *   -2 => -8
- *   0  => 0
- */
-function getCube(/* num */) {
-  throw new Error('Not implemented');
+// Returns the cube of the given number.
+
+function getCube(num) {
+  return num ** 3;
 }
+getCube(3);
+getCube(-2);
+getCube(0);
 
 /**
  * Returns the Fibonacci number located at the index position.
@@ -404,63 +398,39 @@ function isSafeInteger(/* number */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the smallest integer less than or equal to a given number.
- *
- * @param {number} number
- * @return {number}
- *
- * @example:
- * 5.9  => 5
- * -5.1 => -6
- */
-function roundToSmallestInteger(/* number */) {
-  throw new Error('Not implemented');
-}
+// Returns the smallest integer less than or equal to a given number.
 
-/**
- * Returns the largest integer greater than or equal to a given number.
- *
- * @param {number} number
- * @return {number}
- *
- * @example:
- * 5.1  => 6
- * -5.9 => -5
- */
-function roundToLargestInteger(/* number */) {
-  throw new Error('Not implemented');
+function roundToSmallestInteger(number) {
+  return Math.floor(number);
 }
+roundToSmallestInteger(5.9);
+roundToSmallestInteger(-5.1);
 
-/**
- * Returns the value of a number rounded to the nearest integer.
- *
- * @param {number} number
- * @return {number}
- *
- * @example:
- * 5.5  => 6
- * 5.4  => 5
- * -5.5 => -5
- */
-function roundToNearestInteger(/* number */) {
-  throw new Error('Not implemented');
-}
+// Returns the largest integer greater than or equal to a given number.
 
-/**
- * Returns the integer part of a number by removing any fractional digits.
- *
- * @param {number} number
- * @return {number}
- *
- * @example:
- * 5.5  => 5
- * 5.4  => 5
- * -5.5 => -5
- */
-function getIntegerPartNumber(/* number */) {
-  throw new Error('Not implemented');
+function roundToLargestInteger(number) {
+  return Math.ceil(number);
 }
+roundToLargestInteger(5.1);
+roundToLargestInteger(-5.9);
+
+// Returns the value of a number rounded to the nearest integer.
+
+function roundToNearestInteger(number) {
+  return Math.round(number);
+}
+roundToNearestInteger(5.5);
+roundToNearestInteger(5.4);
+roundToNearestInteger(-5.5);
+
+// Returns the integer part of a number by removing any fractional digits.
+
+function getIntegerPartNumber(number) {
+  return Math.trunc(number);
+}
+getIntegerPartNumber(5.5);
+getIntegerPartNumber(5.4);
+getIntegerPartNumber(-5.5);
 
 /**
  * Returns the sum of numbers.
@@ -478,21 +448,13 @@ function getSumOfNumbers(/* x1, x2, x3 */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the largest number.
- *
- * @param {number} firstNumber
- * @param {number} secondNumber
- * @return {number}
- *
- * @example:
- * 1, 2   => 2
- * -5, -6 => -5
- * 0, 5   => 5
- */
-function getMaxNumber(/* firstNumber, secondNumber */) {
-  throw new Error('Not implemented');
+// Returns the largest number.
+function getMaxNumber(firstNumber, secondNumber) {
+  return Math.max(firstNumber, secondNumber);
 }
+getMaxNumber(1, 2);
+getMaxNumber(-5, -6);
+getMaxNumber(0, 5);
 
 /**
  * Returns a random integer in the range from min to max.
