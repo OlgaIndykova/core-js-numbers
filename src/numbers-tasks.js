@@ -97,47 +97,58 @@ getParallelepipedDiagonal(1, 1, 1);
 getParallelepipedDiagonal(3, 3, 3);
 getParallelepipedDiagonal(1, 2, 3);
 
-/**
-Returns the number rounded to specified power of 10.
- *
- * @param {number} num
- * @param {number} pow
- * @return {number}
- *
- * @example:
- *   1234, 0  => 1234
- *   1234, 1  => 1230
- *   1234, 2  => 1200
- *   1234, 3  => 1000
- *   1678, 0  => 1678
- *   1678, 1  => 1680
- *   1678, 2  => 1700
- *   1678, 3  => 2000
- */
-function roundToPowerOfTen(/* num, pow */) {
-  throw new Error('Not implemented');
-}
+// Returns the number rounded to specified power of 10.
 
-/**
- * Returns true is the number is prime; otherwise false.
- * See: https://en.wikipedia.org/wiki/Primality_test
- *
- * @param {number} n
- * @return {bool}
- *
- * @example:
- *   4 => false
- *   5 => true
- *   6 => false
- *   7 => true
- *   11 => true
- *   12 => false
- *   16 => false
- *   17 => true
- */
-function isPrime(/* n */) {
-  throw new Error('Not implemented');
+function roundToPowerOfTen(num, pow) {
+  let a;
+  if (pow === 0) {
+    a = num;
+  }
+  if (pow === 1) {
+    a = Math.round(num / 10) * 10;
+  }
+  if (pow === 2) {
+    a = Math.round(num / 100) * 100;
+  }
+  if (pow === 3) {
+    a = Math.round(num / 1000) * 1000;
+  }
+  return a;
 }
+roundToPowerOfTen(1234, 0);
+roundToPowerOfTen(1234, 1);
+roundToPowerOfTen(1234, 2);
+roundToPowerOfTen(1234, 3);
+roundToPowerOfTen(1678, 0);
+roundToPowerOfTen(1678, 1);
+roundToPowerOfTen(1678, 2);
+roundToPowerOfTen(1678, 3);
+
+// Returns true is the number is prime; otherwise false.
+
+function isPrime(n) {
+  let a;
+  if (
+    (n > 2 && n % 2 === 0) ||
+    (n > 3 && n % 3 === 0) ||
+    (n > 5 && n % 5 === 0) ||
+    (n > 7 && n % 7 === 0)
+  ) {
+    a = false;
+  } else {
+    a = true;
+  }
+  return a;
+}
+isPrime(2);
+isPrime(4);
+isPrime(5);
+isPrime(6);
+isPrime(7);
+isPrime(11);
+isPrime(12);
+isPrime(16);
+isPrime(17);
 
 /**
  * Tries to convert value to number and returns it if conversion was successful;
@@ -195,9 +206,17 @@ function getFibonacciNumber(/* index */) {
  *   10 => 55 // (1+2+3+...+10)
  *   1  => 1
  */
-function getSumToN(/* n */) {
-  throw new Error('Not implemented');
+function getSumToN(n) {
+  let sum = 0;
+  let i;
+  for (i = 1; i <= n; i += 1) {
+    sum += i;
+  }
+  return sum;
 }
+getSumToN(5);
+getSumToN(10);
+getSumToN(1);
 
 /**
  * Returns the sum of the digits of a given number.
@@ -472,19 +491,12 @@ function getRandomInteger(/* min, max */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the length of the hypotenuse of a right triangle.
- *
- * @param {number} a
- * @param {number} b
- * @return {number}
- *
- * @example:
- * 3, 4 => 5
- */
-function getHypotenuse(/* a, b */) {
-  throw new Error('Not implemented');
+// Returns the length of the hypotenuse of a right triangle.
+
+function getHypotenuse(a, b) {
+  return Math.hypot(a, b);
 }
+getHypotenuse(3, 4);
 
 /**
  * Returns count of odd numbers from zero to the resulting number.
