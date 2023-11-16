@@ -195,17 +195,7 @@ function getFibonacciNumber(/* index */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the sum of all numbers from 1 to n.
- *
- * @param {number} n
- * @return {number}
- *
- * @example:
- *   5  => 15 // (1+2+3+4+5)
- *   10 => 55 // (1+2+3+...+10)
- *   1  => 1
- */
+// Returns the sum of all numbers from 1 to n.
 function getSumToN(n) {
   let sum = 0;
   let i;
@@ -218,35 +208,36 @@ getSumToN(5);
 getSumToN(10);
 getSumToN(1);
 
-/**
- * Returns the sum of the digits of a given number.
- *
- * @param {number} num
- * @return {number}
- *
- * @example:
- *   123 => 6  // (1+2+3)
- *   202 => 4  // (2+0+2)
- *   5   => 5  // 5
- */
-function getSumOfDigits(/* num */) {
-  throw new Error('Not implemented');
-}
+// Returns the sum of the digits of a given number.
 
-/**
- * Returns true if the given number is a power of two, false otherwise.
- *
- * @param {number} num
- * @return {boolean}
- *
- * @example:
- *   4   => true
- *   16  => true
- *   15  => false
- */
-function isPowerOfTwo(/* num */) {
-  throw new Error('Not implemented');
+function getSumOfDigits(num) {
+  const arr = String(num).split('');
+  let sum = 0;
+  let i;
+  for (i = 0; i < arr.length; i += 1) {
+    sum += Number(arr[i]);
+  }
+  return sum;
 }
+getSumOfDigits(123);
+getSumOfDigits(202);
+getSumOfDigits(5);
+
+// Returns true if the given number is a power of two, false otherwise.
+
+function isPowerOfTwo(num) {
+  for (let i = 0; i < 30; i += 1) {
+    if (2 ** i === num) {
+      return true;
+    }
+  }
+  return false;
+}
+isPowerOfTwo(4);
+isPowerOfTwo(16);
+isPowerOfTwo(15);
+isPowerOfTwo(512);
+isPowerOfTwo(1000);
 
 /**
  * Returns the sine of a number.
@@ -291,20 +282,13 @@ function toExponential(/* number, fractionDigits */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns a string representation of a number in fixed-point notation.
- *
- * @param {number} number
- * @param {number} fractionDigits
- * @return {string}
- *
- * @example:
- * 12345, 2    => '12345.00'
- * 12.345, 1   => '12.3'
- */
-function toFixed(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+// Returns a string representation of a number in fixed-point notation.
+
+function toFixed(number, fractionDigits) {
+  return number.toFixed(fractionDigits);
 }
+toFixed(12345, 2);
+toFixed(12.345, 1);
 
 /**
  * Returns a string representation of a number in normal (fixed-point or exponential)
@@ -322,19 +306,13 @@ function toPrecision(/* number, precision */) {
   throw new Error('Not implemented');
 }
 
-/**
- * Returns the primitive value of a Number object.
- *
- * @param {Number} number
- * @return {number}
- *
- * @example:
- * new Number(5) => 5
- * Number(-5)    => -5
- */
-function getNumberValue(/* number */) {
-  throw new Error('Not implemented');
+// Returns the primitive value of a Number object.
+
+function getNumberValue(number) {
+  return number.valueOf();
 }
+getNumberValue(5);
+getNumberValue(-5);
 
 /**
  * Returns a boolean value indicating whether the parameter is a number or not.
