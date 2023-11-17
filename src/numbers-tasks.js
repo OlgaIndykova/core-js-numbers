@@ -185,9 +185,15 @@ getCube(0);
  *   3  => 2
  *   10 => 55
  */
-function getFibonacciNumber(/* index */) {
-  throw new Error('Not implemented');
+function getFibonacciNumber(n) {
+  if (n <= 1) return n;
+  return getFibonacciNumber(n - 1) + getFibonacciNumber(n - 2);
 }
+getFibonacciNumber(0);
+getFibonacciNumber(1);
+getFibonacciNumber(2);
+getFibonacciNumber(3);
+getFibonacciNumber(10);
 
 // Returns the sum of all numbers from 1 to n.
 function getSumToN(n) {
@@ -233,16 +239,8 @@ isPowerOfTwo(15);
 isPowerOfTwo(512);
 isPowerOfTwo(1000);
 
-/**
- * Returns the sine of a number.
- *
- * @param {number} num
- * @return {number}
- *
- * @example:
- *   0 => 0
- *   Math.PI / 2 => 1
- */
+// Returns the sine of a number.
+
 function getSine(num) {
   return Math.sin(num);
 }
@@ -326,20 +324,8 @@ getFloatOnString('4.567abcdefgh');
 getFloatOnString('abcdefgh');
 getFloatOnString('4.567abcdefgh123');
 
-/**
- * Returns an integer of the specified base or, if the number cannot be parsed
- * from the argument, returns NaN.
- *
- * @param {string} str
- * @param {number} base
- * @return {number | NaN}
- *
- * @example:
- * '4.567abcdefgh', 10  => 4
- * 'abcdefgh', 10       => NaN
- * '1.234', 2           => 1
- * '10', 8              => 8
- */
+// Returns an integer of the specified base or, if the number cannot be parsed
+
 function getIntegerOnString(str, base) {
   return Number.parseInt(str, base);
 }
@@ -394,21 +380,19 @@ getIntegerPartNumber(5.5);
 getIntegerPartNumber(5.4);
 getIntegerPartNumber(-5.5);
 
-/**
- * Returns the sum of numbers.
- *
- * @param {number} x1
- * @param {number} x2
- * @param {number} x3
- * @returns {number}
- *
- * @example:
- * 1, 2, 3       => 6
- * 0.1, 0.2, 0.3 => 0.6
- */
-function getSumOfNumbers(/* x1, x2, x3 */) {
-  throw new Error('Not implemented');
+// Returns the sum of numbers.
+
+function getSumOfNumbers(x1, x2, x3) {
+  const arr = [x1, x2, x3];
+  let sum = 0;
+  let i;
+  for (i = 0; i < arr.length; i += 1) {
+    sum += arr[i];
+  }
+  return sum.toFixed(1);
 }
+getSumOfNumbers(1, 2, 3);
+getSumOfNumbers(0.1, 0.2, 0.3);
 
 // Returns the largest number.
 function getMaxNumber(firstNumber, secondNumber) {
@@ -418,39 +402,15 @@ getMaxNumber(1, 2);
 getMaxNumber(-5, -6);
 getMaxNumber(0, 5);
 
-/**
- * Returns a random integer in the range from min to max.
- *
- * @param {number} min
- * @param {number} max
- * @return {number}
- *
- * @example:
- * 1, 2  => 1 | 2
- * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
- * -1, 1 => -1 | 0 | 1
- */
+// Returns a random integer in the range from min to max.
 
-function getRandomInteger(/* min, max */) {
-  throw new Error('Not implemented');
-  // const difference = max - min;
-  // let a;
-  // let rand = Math.random();
-  // rand = Math.round(Math.floor(rand * 10));
-  // rand += rand + min;
-  // if (rand <= max) a = rand;
-  // return a;
-  // let res = Math.round(Math.floor(Math.random() * 10));
-  // let a;
-  // res = min + res;
-  // if (res + min <= max) a = res;
-  // if (res === undefined) a = res;
-  // else a = res;
-  // return a;
+function getRandomInteger(min, max) {
+  const rand = min + Math.random() * (max - min);
+  return Math.round(rand);
 }
-// getRandomInteger(1, 2);
-// getRandomInteger(-5, 0);
-// getRandomInteger(-1, 1);
+getRandomInteger(1, 2);
+getRandomInteger(-5, 0);
+getRandomInteger(-1, 1);
 
 // Returns the length of the hypotenuse of a right triangle.
 
@@ -459,22 +419,24 @@ function getHypotenuse(a, b) {
 }
 getHypotenuse(3, 4);
 
-/**
- * Returns count of odd numbers from zero to the resulting number.
- * The resulting number is taken into account.
- *
- * @param {number} number
- * @return {number}
- *
- * @example:
- * 4  => 2
- * 5  => 3
- * 10 => 5
- * 15 => 8
- */
-function getCountOfOddNumbers(/* number */) {
-  throw new Error('Not implemented');
+// Returns count of odd numbers from zero to the resulting number.
+// The resulting number is taken into account.
+
+function getCountOfOddNumbers(number) {
+  let sum;
+  if (number % 2 === 0) {
+    sum = Math.abs(number);
+  } else sum = Math.abs(number) + 1;
+  return sum / 2;
 }
+getCountOfOddNumbers(4);
+getCountOfOddNumbers(5);
+getCountOfOddNumbers(10);
+getCountOfOddNumbers(15);
+getCountOfOddNumbers(-4);
+getCountOfOddNumbers(-5);
+getCountOfOddNumbers(-10);
+getCountOfOddNumbers(-15);
 
 module.exports = {
   getRectangleArea,
