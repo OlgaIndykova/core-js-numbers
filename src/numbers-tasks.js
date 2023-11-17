@@ -150,24 +150,18 @@ isPrime(12);
 isPrime(16);
 isPrime(17);
 
-/**
- * Tries to convert value to number and returns it if conversion was successful;
- * otherwise returns default value passed as a second argument.
- *
- * @param {any} value
- * @param {any} def
- * @return {number}
- *
- * @example
- *   toNumber(null, 0) => 0
- *   toNumber('test', 0) => 0
- *   toNumber('1', 0) => 1
- *   toNumber(42, 0) => 42
- *   toNumber(new Number(42), 0) => 42
- */
-function toNumber(/* value, def */) {
-  throw new Error('Not implemented');
+// Tries to convert value to number and returns it if conversion was successful;
+
+function toNumber(value, def) {
+  let a;
+  if (Number(value)) a = value;
+  else a = def;
+  return a;
 }
+toNumber(null, 0);
+toNumber('test', 0);
+toNumber('1', 0);
+toNumber(42, 0);
 
 // Returns the cube of the given number.
 
@@ -249,38 +243,26 @@ isPowerOfTwo(1000);
  *   0 => 0
  *   Math.PI / 2 => 1
  */
-function getSine(/* num */) {
-  throw new Error('Not implemented');
+function getSine(num) {
+  return Math.sin(num);
 }
+getSine(0);
+getSine(Math.PI / 2);
 
-/**
- * Returns a string representation of a number in a specified base (radix).
- *
- * @param {number} number
- * @param {number} base
- * @return {string}
- *
- * @example:
- * 255, 16 => 'ff'
- * 2, 2    => '10'
- */
-function numberToStringInBase(/* number, base */) {
-  throw new Error('Not implemented');
-}
+// Returns a string representation of a number in a specified base (radix).
 
-/**
- * Returns a string representation of a number in exponential notation.
- *
- * @param {number} number
- * @param {number} fractionDigits
- * @return {string}
- *
- * @example:
- * 12345, 2    => '1.23e+4'
- */
-function toExponential(/* number, fractionDigits */) {
-  throw new Error('Not implemented');
+function numberToStringInBase(number, base) {
+  return number.toString(base);
 }
+numberToStringInBase(255, 16);
+numberToStringInBase(2, 2);
+
+// Returns a string representation of a number in exponential notation.
+
+function toExponential(number, fractionDigits) {
+  return Number.parseFloat(number).toExponential(fractionDigits);
+}
+toExponential(12345, 2);
 
 // Returns a string representation of a number in fixed-point notation.
 
@@ -290,21 +272,14 @@ function toFixed(number, fractionDigits) {
 toFixed(12345, 2);
 toFixed(12.345, 1);
 
-/**
- * Returns a string representation of a number in normal (fixed-point or exponential)
- * notation rounded to precision significant digits.
- *
- * @param {number} number
- * @param {number} precision
- * @return {string}
- *
- * @example:
- * 12345, 7    => '12345.00'
- * 12.345, 4   => '12.35'
- */
-function toPrecision(/* number, precision */) {
-  throw new Error('Not implemented');
+// Returns a string representation of a number in normal (fixed-point or exponential)
+// notation rounded to precision significant digits.
+
+function toPrecision(number, precision) {
+  return number.toPrecision(precision);
 }
+toPrecision(12345, 7);
+toPrecision(12.345, 4);
 
 // Returns the primitive value of a Number object.
 
@@ -314,53 +289,42 @@ function getNumberValue(number) {
 getNumberValue(5);
 getNumberValue(-5);
 
-/**
- * Returns a boolean value indicating whether the parameter is a number or not.
- *
- * @param {number} number
- * @return {boolean}
- *
- * @example:
- * Infinity => false
- * NaN      => false
- * 0        => true
- * 'a' / 1  => false
- * 'a'      => false
- * 5        => true
- * '5'      => false
- */
-function isNumber(/* number */) {
-  throw new Error('Not implemented');
-}
+// Returns a boolean value indicating whether the parameter is a number or not.
 
-/**
- * Returns a boolean value indicating whether a number is an integer or not.
- *
- * @param {number} number
- * @return {boolean}
- *
- * @example:
- * 5    => true
- * 5.1  => false
- * '5'  => false
- */
-function isInteger(/* number */) {
-  throw new Error('Not implemented');
+function isNumber(number) {
+  let a;
+  if (Number.isFinite(number)) a = true;
+  else a = false;
+  return a;
 }
+isNumber(Infinity);
+isNumber(NaN);
+isNumber(0);
+isNumber('a' / 1);
+isNumber('a');
+isNumber(5);
+isNumber('5');
 
-/**
- * Returns a floating point number or, if the number cannot be parsed from the argument, returns NaN.
- *
- * @param {string} str
- * @return {number | NaN}
- *
- * @example:
- * '4.567abcdefgh' => 4.567
- * 'abcdefgh'      => NaN
- */
-function getFloatOnString(/* str */) {
-  throw new Error('Not implemented');
+// Returns a boolean value indicating whether a number is an integer or not.
+
+function isInteger(number) {
+  let a;
+  if (Number.isInteger(number)) a = true;
+  else a = false;
+  return a;
 }
+isInteger(5);
+isInteger(5.1);
+isInteger('5');
+
+// Returns a floating point number or, if the number cannot be parsed from the argument, returns NaN.
+
+function getFloatOnString(str) {
+  return Number.parseFloat(str);
+}
+getFloatOnString('4.567abcdefgh');
+getFloatOnString('abcdefgh');
+getFloatOnString('4.567abcdefgh123');
 
 /**
  * Returns an integer of the specified base or, if the number cannot be parsed
@@ -376,24 +340,25 @@ function getFloatOnString(/* str */) {
  * '1.234', 2           => 1
  * '10', 8              => 8
  */
-function getIntegerOnString(/* str, base */) {
-  throw new Error('Not implemented');
+function getIntegerOnString(str, base) {
+  return Number.parseInt(str, base);
 }
+getIntegerOnString('4.567abcdefgh', 10);
+getIntegerOnString('abcdefgh', 10);
+getIntegerOnString('1.234', 2);
+getIntegerOnString('10', 8);
 
-/**
- * Returns whether a number is a safe integer.
- *
- * @param {number} number
- * @return {boolean}
- *
- * @example:
- * 10       => true
- * 3.5      => false
- * 2 ** 53  => false
- */
-function isSafeInteger(/* number */) {
-  throw new Error('Not implemented');
+// Returns whether a number is a safe integer.
+
+function isSafeInteger(number) {
+  let a;
+  if (Number.isSafeInteger(number)) a = true;
+  else a = false;
+  return a;
 }
+isSafeInteger(10);
+isSafeInteger(3.5);
+isSafeInteger(2 ** 53);
 
 // Returns the smallest integer less than or equal to a given number.
 
@@ -465,9 +430,27 @@ getMaxNumber(0, 5);
  * -5, 0 => -5 | -4 | -3 | -2 | -1 | 0
  * -1, 1 => -1 | 0 | 1
  */
+
 function getRandomInteger(/* min, max */) {
   throw new Error('Not implemented');
+  // const difference = max - min;
+  // let a;
+  // let rand = Math.random();
+  // rand = Math.round(Math.floor(rand * 10));
+  // rand += rand + min;
+  // if (rand <= max) a = rand;
+  // return a;
+  // let res = Math.round(Math.floor(Math.random() * 10));
+  // let a;
+  // res = min + res;
+  // if (res + min <= max) a = res;
+  // if (res === undefined) a = res;
+  // else a = res;
+  // return a;
 }
+// getRandomInteger(1, 2);
+// getRandomInteger(-5, 0);
+// getRandomInteger(-1, 1);
 
 // Returns the length of the hypotenuse of a right triangle.
 
